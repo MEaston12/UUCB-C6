@@ -1,0 +1,16 @@
+.card-title{
+    margin-bottom:0px;
+    padding:.5rem;
+}
+.card-title h4{
+    margin:0;
+}
+hr{
+    margin: 4px;
+}
+button{
+    margin: .5rem 0;
+}
+#city-list{
+    height:450px;
+}

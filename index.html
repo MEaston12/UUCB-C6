@@ -4,11 +4,107 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <title>Weather App</title>
 </head>
-<body>
-    
+<body class='container-fluid'>
+    <header class='row bg-primary text-white text-center'>
+        <h1 class='mx-auto'>Weather Dashboard</h1>
+    </header>
+    <div class="row">
+        <aside class='col-3'>
+            <h2>Search for a City:</h2>
+            <input type='text' class='form-control' placeholder='Salt Lake City'>
+            <button class='btn btn-primary btn-block'>Search</button>
+            <hr class='my-3'>
+            <div class='overflow-auto d-flex flex-column' id='city-list'>
+                <button class='btn btn-secondary'>City 1</button>
+                <button class='btn btn-secondary'>City 2</button>
+                <button class='btn btn-secondary'>City 3</button>
+                <button class='btn btn-secondary'>City 4</button>
+                <button class='btn btn-secondary'>City 5</button>
+            </div>
+        </aside>
+        <main class='col-9'>
+            <section class='row card m-3' id='city-readout'>
+                <div class="card-title p-3 mb-0">
+                    <h2 id='city-name'>Rome, Italy</h2>
+                    <h4 id='date-today'>6/9/0068</h4>
+                </div>
+                <hr>
+                <div class="card-body">
+                    <p>Temp: <span id='curr-temp'> 400</span>&deg</p>
+                    <p>Wind: <span id='curr-wind'>4300</span> MPH</p>
+                    <p>Humidity: <span id='curr-humidity'>-8</span> %</p>
+                    <p>UV Index: <span class='bg-primary text-white rounded p-1 px-2'id='curr-UV'>98.00</span></p>
+                </div>
+            </section>
+            <h3 class='row m-3'>5-Day Forecast</h3>
+            <section class='row m-3' id='5-day-forecast'>
+                <div class="card col m-2" id='day-1'>
+                    <div class="card-title ">
+                        <h4>6/10/0068</h4>
+                    </div>
+                    <hr>
+                    <div class="card-body">
+                        <i></i>
+                        <p>Temp: <span class='temp'></span>&deg</p>
+                        <p>Wind: <span class='wind'></span> MPH</p>
+                        <p>Humidity: <span class='humidity'>200</span>%</p>
+                    </div>
+                </div>
+                <div class="card col m-2" id='day-2'>
+                    <div class="card-title ">
+                        <h4>6/11/0068</h4>
+                    </div>
+                    <hr>
+                    <div class="card-body">
+                        <i></i>
+                        <p>Temp: <span class='temp'></span>&deg</p>
+                        <p>Wind: <span class='wind'></span> MPH</p>
+                        <p>Humidity: <span class='humidity'>200</span>%</p>
+                    </div>
+                </div>
+                <div class="card col m-2" id='day-3'>
+                    <div class="card-title ">
+                        <h4>6/12/0068</h4>
+                    </div>
+                    <hr>
+                    <div class="card-body">
+                        <i></i>
+                        <p>Temp: <span class='temp'></span>&deg</p>
+                        <p>Wind: <span class='wind'></span> MPH</p>
+                        <p>Humidity: <span class='humidity'>200</span>%</p>
+                    </div>
+                </div>
+                <div class="card col m-2" id='day-4'>
+                    <div class="card-title ">
+                        <h4>6/13/0068</h4>
+                    </div>
+                    <hr>
+                    <div class="card-body">
+                        <i></i>
+                        <p>Temp: <span class='temp'></span>&deg</p>
+                        <p>Wind: <span class='wind'></span> MPH</p>
+                        <p>Humidity: <span class='humidity'>200</span>%</p>
+                    </div>
+                </div>
+                <div class="card col m-2" id='day-5'>
+                    <div class="card-title ">
+                        <h4>6/14/0068</h4>                    
+                    </div>
+                    <hr>
+                    <div class="card-body">
+                        <i></i>
+                        <p>Temp: <span class='temp'></span>&deg</p>
+                        <p>Wind: <span class='wind'></span> MPH</p>
+                        <p>Humidity: <span class='humidity'>200</span>%</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="index.js"></script>
