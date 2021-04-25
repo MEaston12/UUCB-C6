@@ -1,3 +1,4 @@
+//The purpose of this file is to define functions to perform the actual workload of the scripting on the page
 const weatherApiKey = '6364ff8c9b0798ae55417a9e7d6eba48';
 const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?appid=${weatherApiKey}`;
 const googleApiKey = 'AIzaSyCCGMhhzz1pUJwb1-QP5lJQpll7SGi8wM8';
