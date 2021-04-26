@@ -12,6 +12,10 @@ async function getWeatherInfo(cityName){
         throw 'Google API NO WORK'
     }
     const googObj = await googRes.json();
+    if(!googObj.results[0]){
+        alert('Error: LOCATION NOT FOUND');
+        throw 'a fit';
+    }
     const location = googObj.results[0].geometry.location;
     //location == {lat, lng}, can use weather api
     const weatherRes = await fetch(`${weatherURL}&lat=${location.lat}&lon=${location.lng}`);
