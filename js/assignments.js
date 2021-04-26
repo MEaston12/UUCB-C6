@@ -1,7 +1,7 @@
 //The purpose of this file is to make the final JQuery assignments to the document
 
 $('#search').click((e) => {
-    searchForCity($('#search-input').val());
+    searchForCity($('#search-input').val() || 'Salt Lake City');
 });
 
 renderDates();
