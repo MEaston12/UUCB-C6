@@ -121,7 +121,10 @@ function saveToStorage(){
 }
 
 function loadFromStorage(){
-    if(!localStorage.getItem('weatherInfoTable')) return;
+    if(!localStorage.getItem('weatherInfoTable')){
+        searchForCity('slc');
+        return;
+    }
     weatherInfoTable = JSON.parse(localStorage.getItem('weatherInfoTable'));
     const tableVals = Object.values(weatherInfoTable);
     if(tableVals[0]){
