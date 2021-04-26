@@ -6,6 +6,7 @@ const googleURL = `https://maps.googleapis.com/maps/api/geocode/json?key=${googl
 let weatherInfoTable = {};
 
 async function getWeatherInfo(cityName){
+    //This function handles all of the API calls
     const googRes = await fetch(`${googleURL}&address=${encodeURIComponent(cityName)}`);
     if(!googRes.ok){
         alert('Error: ' + googRes.status);
@@ -48,6 +49,7 @@ async function getWeatherInfo(cityName){
 }
 
 async function searchForCity(cityName){
+    //This function handles the calling of the getWeatherInfo function and manipulates local data
     const weatherInfo = await getWeatherInfo(cityName);
     delete weatherInfoTable[weatherInfo.name];
     weatherInfoTable[weatherInfo.name] = weatherInfo;
@@ -57,11 +59,13 @@ async function searchForCity(cityName){
 }
 
 function renderCityButtons(){
+    //This deletes and rerenders city shortcut buttons
     $('#city-list').empty();
     for(let cityName of Object.keys(weatherInfoTable).reverse()){
         $('#city-list').append(`<button class='btn btn-secondary'>${cityName}</button>`);
     }
     $('#city-list').find('button').click((e) => {
+        //Buttons use the key for their text, so we just pull the text for the key
         const targetCity = $(e.target).text();
         const tempObj = weatherInfoTable[targetCity];
         delete weatherInfoTable[targetCity];
@@ -73,6 +77,8 @@ function renderCityButtons(){
 }
 
 function renderWeatherReadout(cityData){
+    //This function changes all on page weather related data elements via
+    //  a given js object containing said weather data.
     const today = cityData.days[0];
     $('#city-name').text(cityData.name);
     $('#curr-temp').text(kToF(today.temp));
@@ -101,11 +107,9 @@ function renderWeatherReadout(cityData){
     $('#curr-UV').css('background-color',color);
 }
 
-function dateToString(date){
-    return `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
-}
-
 function renderDates(){
+    //Instead of having anything too fancy with moment or whatever, this just
+    //   renders the dates on page load according to today's date plus 1-5 days
     const todayAndOtherDays = new Date();
     $('#date-today').text(dateToString(todayAndOtherDays));
     for(let i = 1; i < 6; i++){
@@ -114,13 +118,13 @@ function renderDates(){
     }
 }
 
-const kToF = (kelv) => Math.round((kelv - 273.15) * 9 / 5 + 32);  //fancy arrows
-
 function saveToStorage(){
+    //This function handles the localStorage saving process
     localStorage.setItem('weatherInfoTable',JSON.stringify(weatherInfoTable));
 }
 
 function loadFromStorage(){
+    //This function handles the localStorage loading process
     if(!localStorage.getItem('weatherInfoTable')){
         searchForCity('slc');
         return;
@@ -132,3 +136,7 @@ function loadFromStorage(){
         searchForCity(tableVals[tableVals.length - 1].name);
     }
 }
+
+//Helper functions using arrow notation
+const dateToString = (date) => `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
+const kToF = (kelv) => Math.round((kelv - 273.15) * 9 / 5 + 32);  //fancy arrows
