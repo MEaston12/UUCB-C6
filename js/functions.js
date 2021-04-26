@@ -77,6 +77,17 @@ function renderWeatherReadout(cityData){
         card.find('.wind').text(days[i].wind);
         card.find('.humidity').text(days[i].humidity);
     }
+    let color = '';
+    if(today.uvi < 3){ //green
+        color = '#299501';
+    } else if(today.uvi < 6) { //yellow
+        color = '#f7e401';
+    } else if(today.uvi < 8) { //orange
+        color = '#f95901';
+    } else { //red
+        color = '#d90011';
+    }
+    $('#curr-UV').css('background-color',color);
 }
 
 function dateToString(date){
