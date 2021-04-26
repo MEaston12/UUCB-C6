@@ -49,6 +49,7 @@ async function getWeatherInfo(cityName){
 
 async function searchForCity(cityName){
     const weatherInfo = await getWeatherInfo(cityName);
+    delete weatherInfoTable[weatherInfo.name];
     weatherInfoTable[weatherInfo.name] = weatherInfo;
     renderCityButtons();
     renderWeatherReadout(weatherInfo);
@@ -67,6 +68,7 @@ function renderCityButtons(){
         weatherInfoTable[targetCity] = tempObj;
         renderWeatherReadout(tempObj);
         renderCityButtons();
+        saveToStorage();
     });
 }
 
