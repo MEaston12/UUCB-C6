@@ -61,7 +61,12 @@ function renderCityButtons(){
         $('#city-list').append(`<button class='btn btn-secondary'>${cityName}</button>`);
     }
     $('#city-list').find('button').click((e) => {
-        renderWeatherReadout(weatherInfoTable[$(e.target).text()]);
+        const targetCity = $(e.target).text();
+        const tempObj = weatherInfoTable[targetCity];
+        delete weatherInfoTable[targetCity];
+        weatherInfoTable[targetCity] = tempObj;
+        renderWeatherReadout(tempObj);
+        renderCityButtons();
     });
 }
 
